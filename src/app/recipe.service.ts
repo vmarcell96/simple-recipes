@@ -15,5 +15,11 @@ export class RecipeService {
     return recipes;
   }
 
+  getRecipe(id: Number): Observable<Recipe> {
+    const recipe = RECIPES.find(r => r.id == id)!;
+    this.messageService.add(`RecipeService: fetched recipe id=${id}`);
+    return of (recipe);
+  }
+
   constructor(private messageService: MessageService) { }
 }
