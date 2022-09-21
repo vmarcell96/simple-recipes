@@ -12,16 +12,9 @@ export class RecipesComponent implements OnInit {
 
   recipes: Recipe[] = [];
   
-  selectedRecipe?: Recipe;
 
   constructor(private recipeService: RecipeService, private messageService: MessageService) { }
   
-
-
-  onSelect(recipe: Recipe): void {
-  this.selectedRecipe = recipe;
-  this.messageService.add(`RecipesComponent: Selected recipe id=${recipe.id}`)
-  }
 
   getRecipes(): void {
     this.recipeService.getRecipes()
