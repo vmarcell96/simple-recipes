@@ -27,6 +27,13 @@ export class RecipeDetailComponent implements OnInit {
         .subscribe(recipe => this.recipe = recipe);
   }
 
+  save(): void {
+    if (this.recipe) {
+      this.recipeService.updateRecipe(this.recipe)
+        .subscribe(() => this.goBack());
+    }
+  }
+
   goBack(): void {
     this.location.back();
   }

@@ -3,7 +3,13 @@
     <div>id: {{recipe.id}}</div>
     <div>
       <label for="recipe-name">Recipe name: </label>
+      <br>
       <input id="recipe-name" [(ngModel)]="recipe.name" placeholder="name">
+      <br>
+      <label for="recipe-description">Recipe description: </label>
+      <br>
+      <textarea cols="30" rows="10" id="recipe-description" [(ngModel)]="recipe.description" placeholder="description"></textarea>
     </div>
     <button type="button" (click)="goBack()">Go back</button>
+    <button type="button" (click)="save()">save</button>
 </div>
