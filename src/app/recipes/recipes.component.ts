@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../recipe';
-import { RECIPES } from '../mock-recipes';
+import { RecipeService } from '../recipe.service';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-recipes',
@@ -8,21 +9,28 @@ import { RECIPES } from '../mock-recipes';
   styleUrls: ['./recipes.component.css']
 })
 export class RecipesComponent implements OnInit {
-  recipes = RECIPES;
+
+  recipes: Recipe[] = [];
   
-  constructor() { }
-
-
   selectedRecipe?: Recipe;
+
+  constructor(private recipeService: RecipeService, private messageService: MessageService) { }
+  
+
 
   onSelect(recipe: Recipe): void {
   this.selectedRecipe = recipe;
-  console.log(this.selectedRecipe)
+  this.messageService.add(`RecipesComponent: Selected recipe id=${recipe.id}`)
+  }
+
+  getRecipes(): void {
+    this.recipeService.getRecipes()
+      .subscribe(recipes => this.recipes = recipes)
   }
   
 
   ngOnInit(): void {
-    
+    this.getRecipes();
   }
 
 }
