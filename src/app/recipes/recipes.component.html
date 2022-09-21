@@ -8,11 +8,4 @@
     </li>
 </ul>
 
-<div *ngIf="selectedRecipe">
-    <h2>{{selectedRecipe.name | uppercase}} Details</h2>
-    <div>id: {{selectedRecipe.id}}</div>
-    <div>
-      <label for="recipe-name">Recipe name: </label>
-      <input id="recipe-name" [(ngModel)]="selectedRecipe.name" placeholder="name">
-    </div>
-  </div>
+<app-recipe-detail [recipe]="selectedRecipe"></app-recipe-detail>
