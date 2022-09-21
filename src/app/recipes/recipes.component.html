@@ -1,7 +1,18 @@
-<h2>{{recipe.name | uppercase}} Recipe</h2>
-<div><span>id: </span><span>{{recipe.id}}</span></div>
-<div>
-    <label for="name">Recipe name: </label>
-    <input id="name" [(ngModel)]="recipe.name" placeholder="name">
-</div>
-<div><span>description: </span><span>{{recipe.description}}</span></div>
+<h2>Recipes</h2>
+<ul class="recipes">
+    <li *ngFor="let recipe of recipes">
+        <button type="button" (click)="onSelect(recipe)" [class.selected]="recipe === selectedRecipe">
+            <span class="badge">{{recipe.id}}</span>
+            <span class="name">{{recipe.name}}</span>
+        </button>
+    </li>
+</ul>
+
+<div *ngIf="selectedRecipe">
+    <h2>{{selectedRecipe.name | uppercase}} Details</h2>
+    <div>id: {{selectedRecipe.id}}</div>
+    <div>
+      <label for="recipe-name">Recipe name: </label>
+      <input id="recipe-name" [(ngModel)]="selectedRecipe.name" placeholder="name">
+    </div>
+  </div>
